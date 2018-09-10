@@ -1,0 +1,20 @@
+digraph {
+    rankdir=TB
+    compound=true
+    fontname="Inconsolata, Consolas"
+    fontsize=15
+    margin="0,0"
+    ranksep=0.3
+    nodesep=1
+    penwidth=0.5
+    label = "\"3.1416\"";
+    labelloc = b;
+    
+    node [fontname="Inconsolata, Consolas", fontsize=10, penwidth=0.5, colorscheme=spectral7]
+    edge [fontname="Inconsolata, Consolas", fontsize=10, penwidth=0.5]
+    
+    {
+        node [shape=Mrecord, fontsize=10, style=filled]
+        n [fillcolor=7, label="{number|n=3.1416}"]
+    }
+}

@@ -1,0 +1,38 @@
+digraph {
+    rankdir=TB
+    compound=true
+    fontname="Inconsolata, Consolas"
+    margin="0,0"
+    ranksep=0.3
+    nodesep=1
+    penwidth=0.5
+    fontsize=15
+    label="\"[\"abc\",[1,2],3]\"";
+    labelloc=b;
+    
+    node [fontname="Inconsolata, Consolas", fontsize=10, penwidth=0.5, colorscheme=spectral7]
+    edge [fontname="Inconsolata, Consolas", fontsize=10, penwidth=0.5]
+    
+    {
+        node [shape=record, fontsize=10, style=filled, margin=0.1, height=0.3]
+        abc  [fillcolor=3, label="<h>a|b|c|d|\\0"]
+    }
+    
+    {
+        node [shape=Mrecord, fontsize=10, style=filled]
+        s  [fillcolor=6, label="{string|<s>s|len=3}"]
+        a1 [fillcolor=2, label="{array|<e>e|size=3}"]
+        a2 [fillcolor=2, label="{array|<e>e|size=2}"]
+        n1 [fillcolor=7, label="{number|n=1}"]
+        n2 [fillcolor=7, label="{number|n=2}"]
+        n3 [fillcolor=7, label="{number|n=3}"]
+            
+        a1:e -> s
+        s:s -> abc:h
+        a2:e -> n1;
+        a1 -> {a2, n3}  [style=invis];
+        a2:e -> n2 [style=invis];
+        n1 -> n2  [style=dashed, constraint=false];
+        s -> a2 -> n3 [style=dashed, constraint=false];
+    }
+}

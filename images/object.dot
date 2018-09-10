@@ -1,0 +1,47 @@
+digraph {
+    rankdir=TB
+    compound=true
+    fontname="Inconsolata, Consolas"
+    margin="0,0"
+    ranksep=0.3
+    nodesep=1
+    penwidth=0.5
+    fontsize=15
+    label = "{\"i\":123,\"s\":\"abc\",\"a\":[1,2,3],\"o\":{\"1\":1,\"2\":2,\"3\":3}";
+    labelloc = b;
+    
+    node [fontname="Inconsolata, Consolas", fontsize=10, penwidth=0.5, colorscheme=spectral7]
+    edge [fontname="Inconsolata, Consolas", fontsize=10, penwidth=0.5]
+
+    {
+        node [shape=record, fontsize=10, style=filled, margin=0.1, height=0.3]
+        abc [fillcolor=3, label="<h>a|b|c|d|\\0"]
+    }
+    
+    {
+    
+        node [shape=Mrecord, fontsize=10, style=filled]
+        o1 [fillcolor=1, label="{object|<m>m|size=4}"]
+        i  [fillcolor=7, label="{k=\"i\"|number|i=1}"]
+        s  [fillcolor=6, label="{k=\"s\"|string|<s>s|len=3}"]
+        a  [fillcolor=2, label="{k=\"a\"|array|<e>e|size=3}"]
+        n1 [fillcolor=7, label="{number|n=1}"]
+        n2 [fillcolor=7, label="{number|n=2}"]
+        n3 [fillcolor=7, label="{number|n=3}"]
+        o2 [fillcolor=1, label="{k=\"o\"|object|<m>m|size=3}"]
+        m1 [fillcolor=7, label="{k=\"1\"|number|n=1}"]
+        m2 [fillcolor=7, label="{k=\"2\"|number|n=2}"]
+        m3 [fillcolor=7, label="{k=\"3\"|number|n=3}"]
+        
+        o1:m -> i
+        o1 -> {i, s, a, o2} [style=invis];
+        i-> s -> a -> o2 [style=dashed, constraint=false];
+        s:s -> abc:h;
+        a -> {n1, n2, n3} [style=invis];
+        a:e -> n1;
+        n1 -> n2 -> n3 [style=dashed, constraint=false];     
+        o2 -> {m1, m2, m3} [style=invis];
+        o2:m -> m1;
+        m1 -> m2 -> m3 [style=dashed, constraint=false];
+    }
+}
