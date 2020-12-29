@@ -28,8 +28,8 @@ typedef struct {
 }context;
 
 static void* context_push(context* c, size_t size) {
-    void* ret;
     assert(size > 0);
+    void* ret;
     if (c->top + size >= c->size) {
         if (c->size == 0) {
             c->size = PARSE_STACK_INIT_SIZE;
